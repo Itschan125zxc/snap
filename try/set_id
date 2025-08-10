@@ -1,0 +1,10 @@
+#!/system/bin/sh
+if [ -z "$1" ]; then
+    echo "Usage: set_id <new_android_id>"
+    exit 1
+fi
+echo "$1" > /data/adb/ksu/modules/spoof_android_id/config
+settings put secure android_id "$1"
+echo "Android ID set to $1"
+# Optional: Clear cache for specific apps (uncomment if needed)
+# pm clear com.google.android.gms
